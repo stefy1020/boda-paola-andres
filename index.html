@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Invitación Boda de Paola & Andres</title>
+<meta name="description" content="Paola & Andres · 14 de noviembre de 2026 · ¡Te esperamos!">
+<meta property="og:title" content="Invitación Boda de Paola & Andres">
+<meta property="og:description" content="14 de noviembre de 2026 · Barbosa, Santander">
+<meta property="og:type" content="website">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Parisienne&family=Outfit:wght@300;400;500&family=Great+Vibes&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ======= AJUSTES RÁPIDOS ======= */
+:root{
+  --fondo:#ebe7de;      /* beige de fondo */
+  --dorado:#d6ca90;     /* botones y contador */
+  --texto:#3b3a36;
+  --rosa:#f27fbf;       /* botón "Ver invitación" y mapa */
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--fondo);color:var(--texto)}
+body{font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.pagina{width:100%;margin:0 auto;background:var(--fondo);padding-bottom:110px}
+section{max-width:760px;margin-left:auto;margin-right:auto}
+.script{font-family:'Parisienne',cursive}
+h2{font-family:'Playfair Display',serif;font-weight:400;font-size:clamp(1.75rem,4vw,2.6rem);color:#2f2e2b}
+
+/* PORTADA */
+.hero{position:relative;height:clamp(520px,100svh,1000px);background:url('img/portada.jpg') center 38%/cover no-repeat;text-align:center;color:#fff}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.58),rgba(0,0,0,.25) 32%,rgba(0,0,0,0) 52%)}
+.hero .txt{position:relative;padding:clamp(18px,6vh,70px) 16px 0}
+.hero h1{font-family:'Great Vibes',cursive;font-weight:400;font-size:clamp(4rem,17vw,7.5rem);line-height:.95;color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.55),0 0 26px rgba(230,195,120,.55)}
+.hero h1 .amp{display:block;font-family:'Playfair Display',serif;font-style:italic;font-size:.42em;color:#f1d796;line-height:1.1;margin:.08em 0}
+.hero p{display:inline-flex;align-items:center;gap:14px;font-family:'Cormorant Garamond',serif;font-weight:500;text-transform:uppercase;letter-spacing:.2em;white-space:nowrap;font-size:clamp(.95rem,3.8vw,1.7rem);margin-top:18px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.6)}
+.hero p::before,.hero p::after{content:"";width:clamp(18px,6vw,60px);height:1px;background:#f1d796;box-shadow:0 1px 3px rgba(0,0,0,.4)}
+
+/* CONTADOR */
+.contador{display:flex;justify-content:center;gap:6px;padding:26px 0 0}
+.contador .u{text-align:center}
+.contador b{display:block;background:var(--dorado);font-family:'Playfair Display',serif;font-weight:400;font-size:1.3rem;letter-spacing:.05em;width:36px;padding:6px 0;border-radius:3px}
+.contador span{font-family:'Parisienne',cursive;font-size:.8rem;color:#555}
+
+section{text-align:center;padding:40px 26px 10px}
+.icono{width:28px;height:28px;margin:0 auto 26px;display:block;stroke:#2f2e2b;fill:none;stroke-width:1.6}
+.bloque-script{font-family:'Parisienne',cursive;font-size:clamp(1.3rem,2.8vw,1.7rem);line-height:1.5;margin-top:14px;color:#333}
+
+.reserva-tit{font-family:'Cormorant Garamond',serif;text-transform:uppercase;letter-spacing:.22em;font-size:.85rem;color:#6f6552;margin-top:22px}
+.reservados{display:flex;justify-content:center;gap:clamp(18px,6vw,60px);margin-top:16px;flex-wrap:wrap}
+.reservados .quien{font-family:'Playfair Display',serif;font-size:1.15rem;color:#2f2e2b}
+.tonos{display:flex;justify-content:center;gap:8px;margin-top:10px}
+.tonos i{width:30px;height:30px;border-radius:50%;display:block;border:2px solid #fff;box-shadow:0 0 0 1px #cfc6b2,0 2px 6px rgba(0,0,0,.12)}
+.corazon{position:relative;width:clamp(240px,62vw,340px);aspect-ratio:100/92;margin:40px auto 10px;filter:drop-shadow(0 8px 14px rgba(0,0,0,.18))}
+.corazon::before,.corazon img{-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 92'%3E%3Cpath d='M50 90C20 68 2 51 2 29 2 13 14 2 28 2c10 0 18 6 22 14C54 8 62 2 72 2c14 0 26 11 26 27 0 22-18 39-48 61z'/%3E%3C/svg%3E") center/100% 100% no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 92'%3E%3Cpath d='M50 90C20 68 2 51 2 29 2 13 14 2 28 2c10 0 18 6 22 14C54 8 62 2 72 2c14 0 26 11 26 27 0 22-18 39-48 61z'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+.corazon::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,#f3dc9c,#c9a15a 50%,#ecd08c)}
+.corazon img{position:absolute;inset:7px;width:calc(100% - 14px);height:calc(100% - 14px);object-fit:cover;object-position:center 58%}
+/* POLAROID */
+.polaroid{position:relative;width:clamp(220px,40vw,320px);margin:40px auto 10px;background:#fff;padding:12px 12px 44px;box-shadow:0 6px 18px rgba(0,0,0,.12)}
+.polaroid img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover}
+.polaroid::before{content:"";position:absolute;top:-8px;right:34px;width:44px;height:14px;background:rgba(240,220,160,.8);transform:rotate(2deg)}
+
+/* MAPA */
+.mapa{position:relative;margin:22px auto 0;width:min(100%,420px);height:210px;border-radius:16px;overflow:hidden;border:5px solid #fff;box-shadow:0 0 0 1px #d8cfbb,0 6px 16px rgba(0,0,0,.08)}
+.mapa iframe{width:100%;height:100%;border:0;display:block}
+.mapa a{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);background:var(--rosa);color:#fff;text-decoration:none;font-size:.75rem;padding:8px 16px;border-radius:8px;white-space:nowrap}
+
+.foto-arco{width:clamp(250px,70vw,380px);margin:0 auto;padding:10px;border:1px solid #cfc6b2;border-radius:200px 200px 10px 10px}
+.foto-arco img{width:100%;display:block;aspect-ratio:4/5;object-fit:cover;border-radius:190px 190px 6px 6px}
+.foto-marco{position:relative;width:clamp(240px,64vw,340px);margin:30px auto 0;padding:7px;border-radius:50%;background:linear-gradient(135deg,#f3dc9c,#c9a15a 50%,#ecd08c);box-shadow:0 10px 24px rgba(0,0,0,.14)}
+.foto-marco::after{content:"";position:absolute;inset:-12px;border-radius:50%;border:1px solid #d3c29a}
+.foto-marco img{width:100%;display:block;aspect-ratio:4/5;object-fit:cover;object-position:center 30%;border-radius:50%;border:4px solid #fff}
+/* ITINERARIO */
+.itinerario{list-style:none;margin:30px auto 0;max-width:300px;text-align:left}
+.itinerario li{display:grid;grid-template-columns:70px 14px 22px 1fr;align-items:start;column-gap:8px;min-height:62px;position:relative}
+.itinerario .hora{font-family:'Parisienne',cursive;font-size:1.15rem;text-align:right;padding-top:2px}
+.itinerario .punto{position:relative;height:100%}
+.itinerario .punto::before{content:"";position:absolute;left:3px;top:6px;width:9px;height:9px;border-radius:50%;background:#bdb7a6}
+.itinerario li:not(:last-child) .punto::after{content:"";position:absolute;left:7px;top:22px;bottom:4px;width:1px;background:#bdb7a6}
+.itinerario svg{width:16px;height:16px;stroke:#444;fill:none;stroke-width:1.6;margin-top:18px}
+.itinerario .ev{font-family:'Playfair Display',serif;font-size:.95rem;line-height:1.55;padding-top:2px;color:#444}
+
+/* BOTÓN FLOTANTE */
+.flotante{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);width:calc(100% - 32px);max-width:448px;background:var(--dorado);color:#2f2e2b;border:0;border-radius:24px;padding:14px;font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:500;box-shadow:0 4px 14px rgba(0,0,0,.18);cursor:pointer;z-index:20}
+
+
+/* ===================== SOBRE DE ENTRADA ===================== */
+#sobre{position:fixed;inset:0;z-index:100;perspective:1600px;overflow:hidden;background:#a87c3c;cursor:pointer}
+#sobre .interior{position:absolute;inset:0;background:radial-gradient(ellipse at center,#8e6a30 0%,#a87c3c 70%)}
+#sobre .solapa{position:absolute;inset:0;transition:transform 1.3s cubic-bezier(.6,.05,.3,1),opacity 1.3s;filter:drop-shadow(0 0 4px rgba(70,45,10,.35))}
+#sobre .solapa > div{position:absolute;inset:0;--brillo:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 .95  0 0 0 0 .8  0 0 0 1.6 -.75'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23n)'/%3E%3C/svg%3E");background:var(--brillo),linear-gradient(160deg,#f3d79c 0%,#dcb46e 45%,#c9a05a 100%);background-size:220px 220px,cover}
+#sobre .sup > div{background:var(--brillo),linear-gradient(175deg,#f6dca2 0%,#e2bb74 55%,#cfa55f 100%)!important;background-size:220px 220px,cover!important}
+#sobre .inf > div{background:var(--brillo),linear-gradient(0deg,#b28642 0%,#c89a53 45%,#d9b06b 100%)!important;background-size:220px 220px,cover!important}
+#sobre .izq > div{background:var(--brillo),linear-gradient(100deg,#e1b771 0%,#d3aa62 60%,#c29650 100%)!important;background-size:220px 220px,cover!important}
+#sobre .der > div{background:var(--brillo),linear-gradient(260deg,#c59a54 0%,#cea35e 55%,#b88b48 100%)!important;background-size:220px 220px,cover!important}
+#sobre .sup{transform-origin:50% 0}
+#sobre .sup > div{clip-path:polygon(0 0,100% 0,50% 52%)}
+#sobre .inf{transform-origin:50% 100%}
+#sobre .inf > div{clip-path:polygon(0 100%,100% 100%,50% 48%);background-position:120px 80px,0 0}
+#sobre .izq{transform-origin:0 50%}
+#sobre .izq > div{clip-path:polygon(0 0,53% 50%,0 100%);background-position:40px 20px,0 0}
+#sobre .der{transform-origin:100% 50%}
+#sobre .der > div{clip-path:polygon(100% 0,47% 50%,100% 100%);background-position:-60px 140px,0 0}
+#sello{position:absolute;left:50%;top:50%;width:clamp(130px,36vw,190px);transform:translate(-50%,-50%);transition:transform .7s ease,opacity .7s ease;filter:drop-shadow(0 8px 12px rgba(80,60,20,.28))}
+#sello svg{width:100%;display:block}
+#sobre .toca{position:absolute;left:0;right:0;top:calc(50% + clamp(80px,22vw,115px));text-align:center;font-family:'Cormorant Garamond',serif;letter-spacing:.3em;text-transform:uppercase;font-size:.72rem;color:#fffaf0;font-weight:500;text-shadow:0 1px 2px rgba(70,40,5,.7),0 0 12px rgba(90,60,15,.6);animation:latido 2s ease-in-out infinite;transition:opacity .4s}
+@keyframes latido{0%,100%{opacity:.45}50%{opacity:1}}
+#sobre.abierto{cursor:default;pointer-events:none}
+#sobre.abierto .toca{opacity:0;animation:none}
+#sobre.abierto #sello{transform:translate(-50%,-50%) scale(1.25);opacity:0}
+#sobre.abierto .izq{transform:rotateY(-110deg);transition-delay:.35s}
+#sobre.abierto .der{transform:rotateY(110deg);transition-delay:.35s}
+#sobre.abierto .sup{transform:rotateX(110deg);transition-delay:.55s}
+#sobre.abierto .inf{transform:rotateX(-110deg);transition-delay:.55s}
+#sobre.abierto .interior{opacity:0;transition:opacity 1s 1.3s}
+#sobre.fuera{opacity:0;transition:opacity .8s 1.2s}
+
+/* BIENVENIDA */
+.velo{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;padding:16px;z-index:50}
+.bienvenida{background:#fff;border-radius:6px;padding:34px 28px;width:100%;max-width:340px;text-align:center}
+.bienvenida h3{font-family:'Outfit',sans-serif;font-weight:500;font-size:1.3rem;letter-spacing:-.02em}
+.bienvenida .sub{font-size:.8rem;color:#444;margin:8px 0 26px}
+.bienvenida .fila{display:flex;align-items:center;justify-content:center;gap:10px;font-size:.85rem;margin:12px 0;color:#333}
+.bienvenida .fila svg{width:16px;height:16px;stroke:#333;fill:none;stroke-width:1.6}
+.bienvenida button{margin-top:22px;width:100%;background:var(--rosa);color:#fff;border:0;border-radius:6px;padding:10px;font-family:'Outfit';font-size:.8rem;cursor:pointer}
+
+/* RSVP */
+.hoja-velo{position:fixed;inset:0;background:rgba(0,0,0,.35);display:none;align-items:flex-end;justify-content:center;z-index:40}
+.hoja-velo.abierta{display:flex}
+.hoja{background:var(--fondo);width:100%;max-width:480px;border-radius:18px 18px 0 0;padding:22px 16px 30px;animation:sube .3s ease}
+@keyframes sube{from{transform:translateY(100%)}to{transform:none}}
+.hoja .top{display:flex;justify-content:center;position:relative;margin-bottom:18px}
+.hoja h3{font-family:'Playfair Display',serif;font-weight:400;font-size:1.45rem}
+.hoja .cerrar{position:absolute;right:4px;top:0;background:none;border:0;font-size:1.4rem;cursor:pointer;color:#333}
+.hoja label{display:block;font-size:.85rem;margin:16px 0 8px}
+.hoja input,.hoja select{width:100%;padding:13px 10px;border:1px solid #ccc7ba;border-radius:4px;background:transparent;font-family:'Outfit';font-size:.9rem;color:#333}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tel{display:grid;grid-template-columns:90px 1fr;gap:8px}
+.hoja .confirmar{display:block;margin:24px auto 0;background:var(--dorado);border:0;border-radius:26px;padding:14px 46px;font-family:'Outfit';font-size:1rem;font-weight:500;color:#2f2e2b;cursor:pointer}
+
+/* MÚSICA */
+.musica{position:fixed;top:12px;right:12px;width:38px;height:38px;border-radius:50%;border:1px solid rgba(0,0,0,.15);background:rgba(255,255,255,.75);display:none;align-items:center;justify-content:center;z-index:30;cursor:pointer;font-size:1rem}
+
+
+/* ===== PANTALLAS GRANDES (tablet / computador) ===== */
+@media (min-width:768px){
+  .contador{gap:12px;padding-top:40px}
+  .contador b{width:62px;font-size:2rem;padding:10px 0;border-radius:5px}
+  .contador span{font-size:.85rem}
+  section{padding:60px 40px 20px}
+  .icono{width:36px;height:36px}
+  .mapa{height:240px}
+  .itinerario{max-width:440px}
+  .itinerario li{grid-template-columns:100px 14px 24px 1fr;min-height:74px}
+  .itinerario .hora{font-size:1.2rem}
+  .itinerario .ev{font-size:1.15rem}
+  .itinerario svg{width:20px;height:20px}
+  .flotante{max-width:380px;font-size:1.05rem;padding:16px}
+  .bienvenida{max-width:400px;padding:44px 36px}
+  .hoja{max-width:520px;border-radius:18px;margin-bottom:30px}
+  .hoja-velo{align-items:center}
+}
+@media (min-width:1100px){
+  .hero{background-position:center 65%}
+}
+
+.aparecer{opacity:0;transform:translateY(20px);transition:opacity .8s,transform .8s}
+.aparecer.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<div class="pagina">
+
+  <header class="hero">
+    <div class="txt">
+      <h1>Paola<span class="amp">&amp;</span>Andres</h1>
+      <p>14 · Noviembre · 2026</p>
+    </div>
+  </header>
+
+  <div class="contador">
+    <div class="u"><b id="d">00</b><span>Días</span></div>
+    <div class="u"><b id="h">00</b><span>Horas</span></div>
+    <div class="u"><b id="m">00</b><span>Minutos</span></div>
+    <div class="u"><b id="s">00</b><span>Segundos</span></div>
+  </div>
+
+  <!-- Código de vestimenta -->
+  <section class="aparecer" style="padding-top:34px">
+    <svg class="icono" viewBox="0 0 24 24"><path d="M12 7a2 2 0 1 1 2-2c0 1.1-2 1.6-2 3v1l9 6.5c.8.6.4 1.5-.5 1.5h-17c-.9 0-1.3-.9-.5-1.5L12 9"/></svg>
+    <h2>Código de vestimenta</h2>
+    <p class="bloque-script" style="margin-top:14px;font-size:clamp(1.6rem,3.4vw,2rem)">Formal</p>
+    <p class="reserva-tit">Se reservan los colores</p>
+    <div class="reservados">
+      <div><p class="quien">Damas</p><div class="tonos"><i style="background:#ffffff"></i><i style="background:#e8b9b5"></i></div><p class="bloque-script" style="margin-top:6px">Blanco y palo rosa</p></div>
+      <div><p class="quien">Caballeros</p><div class="tonos"><i style="background:#1d1d1d"></i><i style="background:#0f6b45"></i></div><p class="bloque-script" style="margin-top:6px">Negro y verde esmeralda</p></div>
+    </div>
+    <div class="corazon"><img src="img/anillo.jpg" alt="Anillo de compromiso"></div>
+  </section>
+
+  <!-- Misa -->
+  <section class="aparecer">
+    <h2>Misa</h2>
+    <p class="bloque-script">Parroquia San Luis Gonzaga,<br>Barbosa, Santander</p>
+    <div class="mapa">
+      <iframe loading="lazy" src="https://www.google.com/maps?q=Parroquia+San+Luis+Gonzaga,+Barbosa,+Santander,+Colombia&z=16&output=embed"></iframe>
+      <a href="https://www.google.com/maps/search/?api=1&query=Parroquia+San+Luis+Gonzaga+Barbosa+Santander+Colombia" target="_blank" rel="noopener">Abrir en google maps</a>
+    </div>
+  </section>
+
+  <!-- Lluvia de sobres -->
+  <section class="aparecer" style="padding-top:70px">
+    <h2>Lluvia de sobres <svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:#2f2e2b;fill:none;stroke-width:1.6;vertical-align:-2px"><rect x="3" y="6" width="18" height="13" rx="1.5"/><path d="M3.5 7l8.5 6.5L20.5 7"/></svg></h2>
+    <div class="foto-marco"><img src="img/beso.jpg" alt="Paola y Andres"></div>
+  </section>
+
+  <!-- Recepción -->
+  <section class="aparecer" style="padding-top:60px">
+    <h2>Recepción</h2>
+    <p class="bloque-script">Salón de eventos Proyecto X<br>Km 1.7 vía Cite,<br>Centro Comercial San Isidro</p>
+    <div class="mapa">
+      <iframe loading="lazy" src="https://www.google.com/maps?q=5.9556657,-73.6182979&z=14&output=embed"></iframe>
+      <a href="https://www.google.com/maps?q=5.9556657,-73.6182979" target="_blank" rel="noopener">Abrir en google maps</a>
+    </div>
+  </section>
+
+  <!-- Foto -->
+  <section class="aparecer" style="padding-top:60px">
+    <div class="foto-arco"><img src="img/alzada.jpg" alt="Paola y Andres"></div>
+    <p class="bloque-script" style="margin-top:22px;font-size:clamp(1.3rem,3vw,1.7rem)">Nuestra historia de amor continúa…</p>
+  </section>
+
+  <!-- Itinerario -->
+  <section class="aparecer" style="padding-top:50px">
+    <h2>Itinerario</h2>
+    <ul class="itinerario">
+      <li><span class="hora">03:30 pm</span><span class="punto"></span><svg viewBox="0 0 24 24"><path d="M12 2v4M10 4h4M5 21V11l7-5 7 5v10M3 21h18M10 21v-5h4v5"/></svg><span class="ev">Ceremonia<br>religiosa</span></li>
+      <li><span class="hora">06:00 pm</span><span class="punto"></span><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="1"/><path d="M4 10h16M8 3v4M16 3v4"/></svg><span class="ev">Recepción Eventos<br>Proyecto X</span></li>
+      <li><span class="hora">06:30 pm</span><span class="punto"></span><svg viewBox="0 0 24 24"><path d="M8 3h8l-1 7a3 3 0 0 1-6 0zM12 13v8M9 21h6"/></svg><span class="ev">Brindis</span></li>
+      <li><span class="hora">07:30 pm</span><span class="punto"></span><svg viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.7 1.8 1.8.7-1.8.7L19 21l-.7-1.8-1.8-.7 1.8-.7z"/></svg><span class="ev">Baile de novios</span></li>
+      <li><span class="hora">08:30 pm</span><span class="punto"></span><svg viewBox="0 0 24 24"><path d="M4 20l5-13 8 8zM14 4l1 2M19 5l-2 2M20 10l-2-.5M11 3c1 2 0 3 0 3"/></svg><span class="ev">Fiesta</span></li>
+      <li><span class="hora">03:00 am</span><span class="punto"></span><span></span><span class="ev">Fin de fiesta</span></li>
+    </ul>
+  </section>
+</div>
+
+<button class="flotante" onclick="abrirRSVP()">Registra tu asistencia</button>
+<button class="musica" id="btnMusica" onclick="toggleMusica()">♪</button>
+
+<!-- ============ SOBRE DE ENTRADA ============ -->
+<div id="sobre" onclick="abrirSobre()">
+  <div class="interior"></div>
+  <div class="solapa sup"><div></div></div>
+  <div class="solapa inf"><div></div></div>
+  <div class="solapa izq"><div></div></div>
+  <div class="solapa der"><div></div></div>
+  <div id="sello"><img src="img/sello.webp" alt="Sello" style="width:100%;display:block"></div>
+  <div class="toca">Toca el sello para abrir</div>
+</div>
+
+<!-- Registro de asistencia -->
+<div class="hoja-velo" id="rsvp" onclick="if(event.target===this)cerrarRSVP()">
+  <form class="hoja" onsubmit="enviarRSVP(event)">
+    <div class="top"><h3>Registra tu asistencia</h3><button type="button" class="cerrar" onclick="cerrarRSVP()">✕</button></div>
+    <label>¿Cuál es tu nombre?</label>
+    <input id="nombre" placeholder="Ej. María García" required>
+    <div class="dos">
+      <div><label>Adultos</label><input id="adultos" type="number" min="0" value="1"></div>
+      <div><label>Menores</label><input id="menores" type="number" min="0" value="0"></div>
+    </div>
+    <label>Escribe tu número de teléfono (opcional)</label>
+    <div class="tel">
+      <select id="indicativo"><option value="+57">🇨🇴 +57</option><option value="+52">🇲🇽 +52</option><option value="+1">🇺🇸 +1</option><option value="+34">🇪🇸 +34</option></select>
+      <input id="telefono" type="tel" placeholder="3001234567">
+    </div>
+    <button class="confirmar" type="submit">Confirmar asistencia</button>
+  </form>
+</div>
+
+<!-- MÚSICA: la canción está en la carpeta audio -->
+<audio id="audio" loop src="audio/musica.mp3"></audio>
+
+<script>
+/* ==== CONFIGURA AQUÍ ==== */
+// Enlace de la "Aplicación web" de Google Apps Script (termina en /exec)
+const URL_GOOGLE_SHEET = "PEGA_AQUI_EL_ENLACE_DE_APPS_SCRIPT";
+// Fecha y hora de la ceremonia
+const FECHA = new Date('2026-11-14T15:30:00-05:00').getTime();
+/* ======================== */
+
+const audio = document.getElementById('audio');
+const btnM = document.getElementById('btnMusica');
+
+function toggleMusica(){ audio.paused ? audio.play() : audio.pause(); btnM.style.opacity = audio.paused ? .5 : 1; }
+function abrirRSVP(){ document.getElementById('rsvp').classList.add('abierta'); }
+function cerrarRSVP(){ document.getElementById('rsvp').classList.remove('abierta'); }
+function enviarRSVP(e){
+  e.preventDefault();
+  const v = id => document.getElementById(id).value.trim();
+  const datos = {
+    nombre: v('nombre'),
+    adultos: v('adultos'),
+    menores: v('menores'),
+    telefono: v('telefono') ? v('indicativo') + ' ' + v('telefono') : ''
+  };
+  if (!/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/.test(URL_GOOGLE_SHEET.trim())) {
+    alert('Falta configurar el enlace de Google Apps Script (debe empezar por https://script.google.com/macros/s/ y terminar en /exec).');
+    return;
+  }
+  const btn = e.target.querySelector('.confirmar');
+  btn.disabled = true; btn.textContent = 'Enviando...';
+  fetch(URL_GOOGLE_SHEET.trim(), {
+    method: 'POST', mode: 'no-cors',
+    headers: {'Content-Type': 'text/plain;charset=utf-8'},
+    body: JSON.stringify(datos)
+  }).then(() => {
+    e.target.innerHTML = '<div style="text-align:center;padding:30px 10px"><h3 style="font-family:Playfair Display,serif;font-weight:400;font-size:1.5rem">¡Gracias, ' + datos.nombre.split(' ')[0] + '!</h3><p class="bloque-script" style="font-size:1.1rem">Tu asistencia quedó registrada.<br>¡Te esperamos!</p><button type="button" class="confirmar" onclick="cerrarRSVP()">Cerrar</button></div>';
+  }).catch(() => {
+    btn.disabled = false; btn.textContent = 'Confirmar asistencia';
+    alert('No se pudo enviar. Revisa tu conexión e inténtalo de nuevo.');
+  });
+}
+
+
+/* ===== Sobre de entrada ===== */
+function abrirSobre(){
+  const s = document.getElementById('sobre');
+  if (s.classList.contains('abierto')) return;
+  window.scrollTo(0,0);
+  s.classList.add('abierto','fuera');
+  if (audio.getAttribute('src')) { audio.play().catch(()=>{}); btnM.style.display = 'flex'; }
+  setTimeout(()=>{ s.style.display='none'; }, 2200);
+}
+
+const pad = n => String(n).padStart(2,'0');
+function tick(){
+  let t = Math.max(0, FECHA - Date.now());
+  const d = Math.floor(t/864e5); t%=864e5;
+  const h = Math.floor(t/36e5); t%=36e5;
+  const m = Math.floor(t/6e4); t%=6e4;
+  d_.textContent=pad(d); h_.textContent=pad(h); m_.textContent=pad(m); s_.textContent=pad(Math.floor(t/1e3));
+}
+const d_=document.getElementById('d'),h_=document.getElementById('h'),m_=document.getElementById('m'),s_=document.getElementById('s');
+tick(); setInterval(tick,1000);
+
+const obs = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);} }),{threshold:.1});
+document.querySelectorAll('.aparecer').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
