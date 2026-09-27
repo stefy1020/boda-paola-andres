@@ -114,17 +114,6 @@ section{text-align:center;padding:40px 26px 10px}
 #sobre.fuera{opacity:0;transition:opacity .8s 1.2s}
 
 
-#bloqueo{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(ellipse at center,#f6efe2,#e7dcc6)}
-#bloqueo .caja{max-width:360px;text-align:center}
-#bloqueo h3{font-family:'Playfair Display',serif;font-weight:500;font-size:1.7rem;color:#2f2e2b;margin-bottom:12px}
-#bloqueo p{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:1.25rem;line-height:1.45;color:#4a463d}
-#bloqueo button{margin-top:22px;background:var(--dorado);border:0;border-radius:24px;padding:12px 30px;font-family:'Outfit';font-size:.95rem;cursor:pointer}
-#bloqueo .cargando{width:38px;height:38px;margin:0 auto 18px;border-radius:50%;border:3px solid #d9ccad;border-top-color:#a8843f;animation:gira 1s linear infinite}
-@keyframes gira{to{transform:rotate(360deg)}}
-#sobre .para{position:absolute;left:0;right:0;top:12%;text-align:center;font-family:'Great Vibes',cursive;font-size:clamp(1.8rem,7vw,2.6rem);color:#fffaf0;text-shadow:0 1px 3px rgba(70,40,5,.6);transition:opacity .4s}
-#sobre.abierto .para{opacity:0}
-.info-inv{text-align:center;font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#6f6552;margin:-6px 0 4px}
-.info-inv:empty{display:none}
 /* BIENVENIDA */
 .velo{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;padding:16px;z-index:50}
 .bienvenida{background:#fff;border-radius:6px;padding:34px 28px;width:100%;max-width:340px;text-align:center}
@@ -269,24 +258,12 @@ section{text-align:center;padding:40px 26px 10px}
   <div class="solapa der"><div></div></div>
   <div id="sello"><img src="img/sello.webp" alt="Sello" style="width:100%;display:block"></div>
   <div class="toca">Toca el sello para abrir</div>
-  <div class="para" id="paraQuien"></div>
-</div>
-
-<!-- Pantalla de bloqueo / verificación -->
-<div id="bloqueo">
-  <div class="caja">
-    <div class="cargando"></div>
-    <h3>Cargando tu invitación…</h3>
-    <p></p>
-    <button type="button" onclick="validarInvitacion()">Reintentar</button>
-  </div>
 </div>
 
 <!-- Registro de asistencia -->
 <div class="hoja-velo" id="rsvp" onclick="if(event.target===this)cerrarRSVP()">
   <form class="hoja" onsubmit="enviarRSVP(event)">
     <div class="top"><h3>Registra tu asistencia</h3><button type="button" class="cerrar" onclick="cerrarRSVP()">✕</button></div>
-    <p class="info-inv" id="infoInv"></p>
     <label>¿Cuál es tu nombre completo?</label>
     <input id="nombre" placeholder="Nombre y apellido" required>
     <label>Número de cédula</label>
@@ -334,58 +311,11 @@ function camposAcomp(){
       <input class="acomp-cc" inputmode="numeric" placeholder="Número de cédula o documento" required value="${esc(prevC[i])}"></div>`;
   cont.innerHTML = html;
 }
-/* ===== Invitación personal (un solo uso) ===== */
-const CODIGO = (new URLSearchParams(location.search).get('c') || '').trim().toUpperCase();
-let CUPOS = 0;
-const lsGet = k => { try { return localStorage.getItem(k); } catch(e) { return null; } };
-const lsSet = (k,v) => { try { localStorage.setItem(k,v); } catch(e) {} };
-
-function bloquear(titulo, texto, reintentar){
-  const b = document.getElementById('bloqueo');
-  b.querySelector('h3').textContent = titulo;
-  b.querySelector('p').innerHTML = texto;
-  b.querySelector('.cargando').style.display = 'none';
-  b.querySelector('button').style.display = reintentar ? 'inline-block' : 'none';
-  b.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  try { audio.pause(); } catch(e) {}
-}
-function mostrarUsada(){
-  bloquear('Invitación ya utilizada', 'Esta invitación ya fue confirmada y no se puede volver a abrir.<br>Si crees que es un error, comunícate con los novios.');
-}
-async function validarInvitacion(){
-  const b = document.getElementById('bloqueo');
-  b.querySelector('.cargando').style.display = 'block';
-  b.querySelector('button').style.display = 'none';
-  b.querySelector('h3').textContent = 'Cargando tu invitación…';
-  b.querySelector('p').textContent = '';
-  if (!CODIGO) return bloquear('Invitación personal', 'Esta invitación es personal.<br>Abre el enlace exacto que te enviaron los novios.');
-  if (lsGet('confirmado_' + CODIGO)) return mostrarUsada();
-  try {
-    const r = await fetch(URL_GOOGLE_SHEET + '?accion=validar&c=' + encodeURIComponent(CODIGO));
-    const d = await r.json();
-    if (!d.ok) return bloquear('Invitación no válida', 'Este enlace no corresponde a ninguna invitación.<br>Revisa que lo hayas copiado completo.');
-    if (d.estado === 'Confirmado') { lsSet('confirmado_' + CODIGO, '1'); return mostrarUsada(); }
-    CUPOS = d.cupos || 0;
-    if (d.invitado) {
-      document.getElementById('paraQuien').textContent = 'Para: ' + d.invitado;
-      document.getElementById('infoInv').innerHTML = 'Invitación para <b>' + d.invitado + '</b>' + (CUPOS ? ' · ' + CUPOS + (CUPOS === 1 ? ' persona' : ' personas') : '');
-    }
-    if (CUPOS) { document.getElementById('adultos').max = CUPOS; document.getElementById('menores').max = Math.max(0, CUPOS - 1); }
-    b.style.display = 'none';
-    document.body.style.overflow = '';
-  } catch(err) {
-    bloquear('Sin conexión', 'No pudimos verificar tu invitación. Revisa tu internet e inténtalo de nuevo.', true);
-  }
-}
-
 function enviarRSVP(e){
   e.preventDefault();
   const v = id => document.getElementById(id).value.trim();
   const limpio = s => s.replace(/[^0-9A-Za-z]/g,'');
   const datos = {
-    accion: 'confirmar',
-    c: CODIGO,
     nombre: v('nombre'),
     cedula: limpio(v('cedula')),
     adultos: v('adultos'),
@@ -393,31 +323,18 @@ function enviarRSVP(e){
     telefono: v('telefono').replace(/\D/g,''),
     acompanantes: [...document.querySelectorAll('.acomp-fila')].map(f => f.querySelector('.acomp').value.trim() + ' - CC ' + limpio(f.querySelector('.acomp-cc').value)).join('; ')
   };
-  const total = (parseInt(datos.adultos)||0) + (parseInt(datos.menores)||0);
-  if (total < 1) return alert('Indica cuántas personas asistirán.');
-  if (CUPOS && total > CUPOS) return alert('Tu invitación es para máximo ' + CUPOS + (CUPOS === 1 ? ' persona.' : ' personas.'));
   const btn = e.target.querySelector('.confirmar');
   btn.disabled = true; btn.textContent = 'Enviando...';
-  fetch(URL_GOOGLE_SHEET + '?' + new URLSearchParams(datos).toString())
-    .then(r => r.json())
-    .then(d => {
-      if (d.ok) {
-        lsSet('confirmado_' + CODIGO, '1');
-        e.target.innerHTML = '<div style="text-align:center;padding:30px 10px"><h3 style="font-family:Playfair Display,serif;font-weight:400;font-size:1.6rem">¡Gracias, ' + datos.nombre.split(' ')[0] + '!</h3><p class="bloque-script">Tu asistencia quedó registrada.<br>¡Te esperamos!</p><button type="button" class="confirmar" onclick="cerrarRSVP();mostrarUsada()">Cerrar</button></div>';
-      } else if (d.motivo === 'usado') {
-        lsSet('confirmado_' + CODIGO, '1'); cerrarRSVP(); mostrarUsada();
-      } else if (d.motivo === 'cupos') {
-        btn.disabled = false; btn.textContent = 'Confirmar asistencia';
-        alert('Tu invitación es para máximo ' + d.cupos + ' personas.');
-      } else {
-        btn.disabled = false; btn.textContent = 'Confirmar asistencia';
-        alert('No pudimos registrar tu asistencia. Inténtalo de nuevo.');
-      }
-    })
-    .catch(() => {
-      btn.disabled = false; btn.textContent = 'Confirmar asistencia';
-      alert('No se pudo enviar. Revisa tu conexión e inténtalo de nuevo.');
-    });
+  fetch(URL_GOOGLE_SHEET, {
+    method: 'POST', mode: 'no-cors',
+    headers: {'Content-Type': 'text/plain;charset=utf-8'},
+    body: JSON.stringify(datos)
+  }).then(() => {
+    e.target.innerHTML = '<div style="text-align:center;padding:30px 10px"><h3 style="font-family:Playfair Display,serif;font-weight:400;font-size:1.6rem">¡Gracias, ' + datos.nombre.split(' ')[0] + '!</h3><p class="bloque-script">Tu asistencia quedó registrada.<br>¡Te esperamos!</p><button type="button" class="confirmar" onclick="cerrarRSVP()">Cerrar</button></div>';
+  }).catch(() => {
+    btn.disabled = false; btn.textContent = 'Confirmar asistencia';
+    alert('No se pudo enviar. Revisa tu conexión e inténtalo de nuevo.');
+  });
 }
 
 /* ===== Sobre de entrada ===== */
@@ -443,7 +360,6 @@ tick(); setInterval(tick,1000);
 
 const obs = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);} }),{threshold:.1});
 document.querySelectorAll('.aparecer').forEach(el=>obs.observe(el));
-validarInvitacion();
 </script>
 </body>
 </html>
